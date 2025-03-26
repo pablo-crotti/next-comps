@@ -1,0 +1,501 @@
+/* ==========================================================================
+   Root Variables
+   ========================================================================== */
+
+:root {
+  --inactive-button: #252525;
+  --active-button: #353535;
+  --light-color: #a5a4a4;
+  --background: #1f1f1f;
+  --primary: #b259f9;
+  --primary-hover: #a34ff9;
+}
+
+/* ==========================================================================
+     Animations
+     ========================================================================== */
+
+@keyframes appearModal {
+  0% {
+    opacity: 0;
+    top: -20px;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+/* ==========================================================================
+     Media Queries
+     ========================================================================== */
+
+/* Desktop Styles */
+@media screen and (min-width: 900px) {
+  @keyframes appear {
+    0% {
+      opacity: 0;
+      top: -10px;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      top: 20px;
+    }
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .button-container {
+    max-width: 220px;
+  }
+
+  .label-button {
+    width: 220px;
+  }
+
+  .label-button input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    color: #fff;
+    border-color: transparent;
+  }
+
+  .container {
+    width: max-content;
+  }
+
+  .cities.visible {
+    top: 20px;
+  }
+
+  .calendar.visible {
+    top: 20px;
+  }
+
+  .duration.visible {
+    top: 20px;
+  }
+
+  .duration-option p {
+    padding: 1rem 2rem;
+  }
+
+  .search-wrapper {
+    padding-left: 1rem;
+    align-items: flex-end;
+  }
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 899px) {
+  @keyframes appear {
+    0% {
+      opacity: 0;
+      top: -10px;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      top: 0px;
+    }
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .close-btn-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .modal-btn {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    background-color: var(--inactive-button);
+    border: solid 1px var(--active-button);
+  }
+
+  .modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: var(--background);
+    padding: 1rem 1rem;
+    animation: appearModal 0.5s;
+    overflow-y: scroll;
+  }
+
+  .close-btn {
+    padding: 0.2rem;
+    border-radius: 100%;
+    background-color: var(--active-button);
+  }
+
+  .block-container {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .button-container {
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+
+  .label-button {
+    width: 100%;
+  }
+
+  .button-container:has(> .active) {
+    background-color: var(--active-button);
+  }
+
+  .label-button input {
+    background-color: transparent;
+    border: solid 1px var(--light-color);
+    outline: none;
+    padding: 0.9rem 1rem;
+    margin-top: 1rem;
+    color: #fff;
+    border-radius: 0.5rem;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .duration-option p {
+    padding: 1rem 0.5rem;
+  }
+
+  .search-wrappeer {
+    padding-left: 0;
+    align-items: flex-end;
+  }
+}
+
+/* ==========================================================================
+     General Component Styles
+     ========================================================================== */
+
+.container {
+  animation: appear 0.5s;
+  border-radius: 0.5rem;
+}
+
+.search-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.search {
+  background-color: var(--primary);
+  height: min-content;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+}
+
+.search:disabled {
+  opacity: 0.5;
+}
+
+.search:disabled:hover {
+  background-color: var(--primary);
+}
+
+.search:hover {
+  background-color: var(--primary-hover);
+  cursor: pointer;
+}
+
+.dynamic-booking {
+  top: 100px;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: fixed;
+  height: 80px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==========================================================================
+     Label Button Styles
+     ========================================================================== */
+
+.label-button {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--inactive-button);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+button.label-button {
+  text-align: left;
+}
+
+button.label-button span {
+  color: var(--light-color);
+}
+
+.label-button input::placeholder {
+  color: var(--light-color);
+}
+
+.label-button.active {
+  background-color: var(--active-button);
+}
+
+/* ==========================================================================
+     City Styles
+     ========================================================================== */
+
+.cities {
+  display: none;
+}
+
+.cities.visible {
+  background-color: var(--active-button);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 1rem;
+  position: relative;
+  left: 0;
+  gap: 1rem;
+}
+
+.cities button {
+  padding: 0.6rem 1rem;
+  border: solid 1px var(--light-color);
+  color: var(--light-color);
+  border-radius: 0.2rem;
+}
+
+.cities button:hover {
+  border-color: #fff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cities button.selected {
+  border-color: #fff;
+  color: var(--inactive-button);
+  background-color: #fff;
+}
+
+/* ==========================================================================
+     Calendar Styles
+     ========================================================================== */
+
+.calendar {
+  display: none;
+}
+
+.calendar.visible {
+  background-color: var(--active-button);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  position: relative;
+  gap: 1rem;
+}
+
+.month-info {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  text-align: center;
+  width: 100%;
+}
+
+.calendar-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.calendar-header span {
+  display: block;
+  width: calc(16px + 1rem);
+}
+
+.calendar-header button {
+  padding: 0.5rem;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-header button:hover {
+  background-color: var(--inactive-button);
+  cursor: pointer;
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+}
+
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.day-label {
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  color: var(--light-color);
+  text-align: center;
+}
+
+.day {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  color: var(--light-color);
+}
+
+.selectable {
+  cursor: pointer;
+  color: #fff;
+}
+
+.selectable:hover {
+  background-color: var(--inactive-button);
+}
+
+.today {
+  border: solid 1px var(--light-color);
+}
+
+.selected {
+  background-color: var(--light-color);
+  color: var(--active-button);
+}
+
+/* ==========================================================================
+     Duration Styles
+     ========================================================================== */
+
+.duration {
+  display: none;
+}
+
+.duration.visible {
+  background-color: var(--active-button);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  position: relative;
+}
+
+.duration select {
+  background-color: var(--active-button);
+  border: none;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  margin: 1rem 0.5rem;
+  border-bottom: solid 2px var(--inactive-button);
+  color: var(--light-color);
+  width: max-content;
+}
+
+.duration select.filled {
+  border-bottom: solid 2px var(--light-color);
+  color: #fff;
+}
+
+.duration select:focus {
+  outline: none;
+  color: #fff;
+}
+
+.duration-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.duration-option {
+  background-color: transparent;
+  color: var(--light-color);
+  width: 100%;
+}
+
+.duration-option:hover {
+  cursor: pointer;
+}
+
+.duration-option span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--inactive-button);
+}
+
+.duration-option:first-child span {
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+
+.duration-option:last-child span {
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+.duration-option.hovered,
+.duration-option.selected {
+  color: #fff;
+}
+
+.duration-option.hovered span,
+.duration-option.selected span {
+  background-color: var(--light-color);
+  cursor: pointer;
+}

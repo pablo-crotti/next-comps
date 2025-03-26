@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --base-background: #f9fafb;
+  --base-foreground: #1f1f1f;
+
+  --base-primary: #4f46e5;
+  --base-primary-light: #5d55e6;
+  --base-primary-dark: #433cc4;
+
+  --base-gray-100: #ffffff;
+  --base-gray-200: #f5f5f5;
+  --base-gray-300: #e0e0e0;
+  --base-gray-400: #cccccc;
+  --base-gray-500: #aaaaaa;
+  --base-gray-600: #888888;
+  --base-gray-700: #666666;
+  --base-gray-800: #444444;
+  --base-gray-900: #252525;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: var(--base-background);
+    --foreground: var(--base-foreground);
+
+    --primary: var(--base-primary);
+    --primary-highlight: var(--base-primary-light);
+
+    --gray-100: var(--base-gray-100);
+    --gray-200: var(--base-gray-200);
+    --gray-300: var(--base-gray-300);
+    --gray-400: var(--base-gray-400);
+    --gray-500: var(--base-gray-500);
+    --gray-600: var(--base-gray-600);
+    --gray-700: var(--base-gray-700);
+    --gray-800: var(--base-gray-800);
+    --gray-900: var(--base-gray-900);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--base-foreground);
+    --foreground: var(--base-background);
+
+    --primary: var(--base-primary-light);
+    --primary-highlight: var(--base-primary-dark);
+
+    --gray-100: var(--base-gray-900);
+    --gray-200: var(--base-gray-800);
+    --gray-300: var(--base-gray-700);
+    --gray-400: var(--base-gray-600);
+    --gray-500: var(--base-gray-500);
+    --gray-600: var(--base-gray-400);
+    --gray-700: var(--base-gray-300);
+    --gray-800: var(--base-gray-200);
+    --gray-900: var(--base-gray-100);
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-highlight: var(--primary-highlight);
+
+  --color-gray-100: var(--gray-100) !important !important;
+  --color-gray-200: var(--gray-200) !important !important;
+  --color-gray-300: var(--gray-300) !important !important;
+  --color-gray-400: var(--gray-400) !important !important;
+  --color-gray-500: var(--gray-500) !important !important;
+  --color-gray-600: var(--gray-600) !important !important;
+  --color-gray-700: var(--gray-700) !important !important;
+  --color-gray-800: var(--gray-800) !important !important;
+  --color-gray-900: var(--gray-900) !important !important;
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+[drawer-backdrop=""] {
+  z-index: 19;
+  background-color: var(--gray-100);
+  opacity: 0.8;
 }
